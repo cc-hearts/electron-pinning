@@ -1,0 +1,24 @@
+{
+  "name": "electron-todo",
+  "version": "0.0.1",
+  "main": "",
+  "module": "",
+  "description": "",
+  "typings": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://"
+  },
+  "files": [],
+  "keywords": [],
+  "author": "cc heart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/"
+  },
+  "homepage": "",
+  "scripts": {},
+  "dependencies": {
+    "electron": "^28.0.0"
+  }
+}
