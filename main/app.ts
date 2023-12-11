@@ -1,10 +1,11 @@
 import { BrowserWindow, BrowserWindowConstructorOptions, app } from 'electron'
+import { registerEvent } from './event';
 
 
 let mainBrowserWindow: BrowserWindow | null = null
 app.whenReady().then(() => {
 
-  const __IS_DEV = !!process.argv[2]
+  const __IS_DEV__ = !!process.argv[2]
 
   console.log(process.argv);
 
@@ -22,20 +23,18 @@ app.whenReady().then(() => {
   mainBrowserWindow = new BrowserWindow({
     webPreferences,
     show: false,
-    // frame: false, // 状态栏
+    frame: false, // default top bar
   })
 
-  if (__IS_DEV) {
+  if (__IS_DEV__) {
     mainBrowserWindow.webContents.openDevTools({ mode: 'undocked' })
   }
 
-  const url = __IS_DEV ? process.argv[2] : 'app://index.html'
+  registerEvent()
+  const url = __IS_DEV__ ? process.argv[2] : 'app://index.html'
   mainBrowserWindow.loadURL(url)
 
-  mainBrowserWindow.setAlwaysOnTop(true, 'floating')
-
 })
-
 
 app.on('activate', () => {
   mainBrowserWindow?.show()

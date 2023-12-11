@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'unocss'
+import 'uno.css'
 
 (() => {
   const app = createApp(App)
