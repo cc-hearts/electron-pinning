@@ -25,7 +25,7 @@ const isPinWindow = ref(false)
 
 function setUrlStorage(url: string) {
   const isExistUrl = storage.value.find(target => target.url === url)
-  if (isExistUrl || isUrl(url)) return
+  if (isExistUrl || !isUrl(url)) return
   storage.value.push({ id: Date.now(), url })
   storage.value = storage.value.slice(-threshold)
   localStorage.setItem('url-storage', JSON.stringify(storage.value))
@@ -57,7 +57,12 @@ const onSearch = (val: string) => {
 onMounted(() => {
   const storageStr = localStorage.getItem('url-storage') || '[]'
   storage.value = JSON.parse(storageStr)
+
+  if (Array.isArray(storage.value) && storage.value.length) {
+    inputVal.value = webviewSrc.value = storage.value[storage.value.length - 1].url
+  }
 })
+
 </script>
 
 <template>
